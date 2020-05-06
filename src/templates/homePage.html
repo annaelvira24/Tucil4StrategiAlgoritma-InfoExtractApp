@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+    <title>
+        Tugas Kecil Stima 4
+    </title>
+    <style>
+        body {font-family: "Lato", sans-serif}
+    </style>
+
+    <body>
+    
+        <!-- Navigation Bar -->
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#perihal">Perihal</a></li>
+            <li><a href="#credit">Credit</a></li>
+        </ul>
+
+        <a name = "home"></a>
+        <h1 class = "center">
+
+            MY INFO-EXTRACTION <br/> APPLICATION
+
+        </h1>
+
+        <!-- form untuk input -->
+        <form action="#results" method="post" id = "boxshadow">
+            <p>Select files &ensp;:&ensp;
+            <input type="file" name="filename" multiple placeholder="Enter a keyword">
+            </p>
+
+            <p>Keyword &ensp;&ensp;: &ensp;
+            <input type="text" name="keyword" placeholder="Enter a keyword">
+            <br/>
+            </p>
+
+            <p>Select Algorithm :</p>
+            <label class = "container">Boyer Moore
+                <input type="radio" id="bm" name = "algorithm" value="bm">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class = "container">Knuth-Morris-Pratt
+                <input type="radio" id="kmp" name = "algorithm" value="kmp">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class = "container">Regular Expression
+                <input type="radio" id="regex" name = "algorithm" value="regex">
+                <span class="checkmark"></span>
+            </label>
+
+            <button class = "button1" type="submit" value="submit">EXTRACT!</button>
+        </form>
+
+        <!-- Container untuk hasil output -->
+        <div class = "generalCont" id = "boxshadow">
+            <a name = "results"></a>
+        <h1>RESULTS</h1>
+        {% for i in range(kalimat|length): %}
+            <p>{{i+1}}. Jumlah  :&ensp;{{jumlah[i]}}</p>
+            <p>&ensp;&ensp;Waktu&ensp;:&ensp;{{tanggal[i]}}</p>
+            <p>&ensp;&ensp;{{kalimat[i]}}</p>
+            <p>&ensp;&ensp;Sumber&ensp;:&ensp;({{sumber[i]}})</p>
+        <br/>
+        {% endfor %}
+        </div>
+
+        <!-- container untuk perihal -->
+        <div class= "generalCont" id = "boxshadow" name = "perihal">
+            <a name = "perihal"></a>
+            <div class="row">
+                <h1>PERIHAL</h1>
+                <p>
+                    String adalah larik yang setiap elemennya adalah karakter. 
+                    Pada pencocokan string, terdapat dua istilah, yaitu teks 
+                    dan pattern. Teks adalah string dengan panjang n karakter, 
+                    sedangkan pattern adalah string dengan panjang m karakter 
+                    (asumsi m << n) dan merupakan string yang mau dicari dalam teks. 
+                </p>
+                <div class="column">
+                    <div class="card">
+                        <p>
+                            <b>
+                                KNUTH-MORRIS PRATT (KMP)<br/>
+                                ALGORITHM
+                            </b>
+                        </p>
+                            <p> Algoritma pencocokan string ini dilakukan dengan memcocokan 
+                                pattern dalam teks dari kiri ke kanan, tetapi pergeseran yang 
+                                dilakukan lebih cerdas dibandingkan pada algoritma brute force. 
+                                Algoritma ini mempertimbangkan banyak pergeseran dan dengan tidak 
+                                mengulangi pemeriksaan yang sama. 
+                            </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="card">
+                        <p>
+                            <b>
+                                BOYER-MOORE(BM)<br/>
+                                ALGORITHM
+                            </b>
+                        </p>
+                            <p> Algortima Boyer-Moore melakukan pencocokan string dengan dua teknik:
+                                The looking glass technique, yaitu 
+                                mencocokan P dalam T dengan pergerakkan mundur (backward) yang dimlai dari akhir P
+                                dan the character-jump technique, yaitu
+                                Ketika mismatch terjadi pada T[i] == x, karakter pada pattern P[j] tidak sama dengan T[i]
+                                 
+                            </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <p>
+                            <b>
+                                REGULAR<br/>
+                                EXPRESSION
+                            </b>
+                        </p>
+                            <p> 
+                                Regular expression (regex) adalah notasi standar yang mendeskripsikan 
+                                suatu pola (pattern) berupa urutan karakter atau string. 
+                                Regex digunakan untuk pencocokan string (string matching) dengan efisien.
+                                Pada tugas ini, pencocokan dengan regex menggunakan library re dari python 
+                                dan digunakan beberapa fungsi
+                            </p>
+                    </div>
+                </div>
+            </div> 
+            <p>
+                Program dibuat dalam bahan python untuk penerapan algoritma pencocokan string.
+                Untuk front-end website, digunakan HTML dan CSS dan untuk back-end digunakan
+                flask
+            </p>
+        </div>
+            
+            
+        <!-- bagian credits -->
+        <div class = "creditsCont">
+            <a name = "credit"></a>
+            <h2 class = 'center'>CREDITS BY</h2>
+            <h3 class="center">Anna Elvira Hartoyo
+                <br/>
+                13518045
+                <br/>
+                APRIL 2020
+            </h3>
+
+        </div>
+    
+
+    </body>
+</html>
